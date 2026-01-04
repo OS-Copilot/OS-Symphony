@@ -2,16 +2,33 @@
 
 <div align="center">
   <img src="assets/logo.jpg" alt="OS-Symphony Logo" width="220px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-   <h1 style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 2.5em; margin-top: 20px;">
+   <h1 style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 2.5em; margin-top: 10px;">
     OS-Symphony
   </h1>
   <h3 style="font-style: italic; color: #555;">
     A Holistic Paradigm for Generalist Computer-Using Agents
   </h3>
 </div>
+
 **Official repository for the paper: [OS-SYMPHONY: A Holistic Framework for Robust and Generalist Computer-Using Agents]()**.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() ![License](https://img.shields.io/badge/License-MIT-blue)[![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)]()
+
+## 📑 Table of Contents
+- [🗞️ Updates](#-updates)
+- [💡 Overview](#-overview)
+- [📊 Results](#-results)
+  - [🐧 OSWorld-Verified (Ubuntu)](#-osworld-verified-ubuntu)
+  - [🪟 WindowsAgentArena（Windows）](#-windowsagentarenawindows)
+  - [🍎 MacOSArena（MacOS）](#-macosarenamacos)
+- [🛠️ Environment & Setup](#️-environment--setup)
+  - [1. Installation](#1-installation)
+  - [2. VM Configuration](#2-vm-configuration)
+  - [3. Running Evaluation](#3-running-evaluation)
+  - [4. Visualization](#4-visualization)
+- [✨ Features](#-features)
+- [😊 Acknowledgement](#-acknowledgement)
+- [📃 Citation](#-citation)
 
 ## 🗞️ Updates
 
