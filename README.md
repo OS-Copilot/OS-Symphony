@@ -6,7 +6,7 @@
     OS-Symphony
   </h1>
   <h3 style="font-style: italic; color: #555;">
-    A Holistic Paradigm for Generalist Computer-Using Agents
+    A Holistic Framework for Robust and Generalist Computer-Using Agents
   </h3>
 </div>
 
