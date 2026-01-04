@@ -1,0 +1,37 @@
+{
+    "id": "calendar_4",
+    "system_img": "default",
+    "instruction": "In the Calendar app, create a new calendar named \"deadline\". Then, create three events in this calendar: \"paper ddl\", \"homework ddl\", and \"dirty work ddl\".",
+    "config": [
+      {
+        "type": "cmd",
+        "parameters": {
+          "command": [
+            "open -a 'Calendar'"
+          ]
+        }
+      }
+    ],
+    "related_apps": [
+      "calendar"
+    ],
+    "evaluator": {
+      "func": ["calendar_check_calendar_contains_events"],
+      "conj": "and",
+      "parameters": [
+        {
+          "calendar_name": "deadline",
+          "event_names": ["paper ddl", "homework ddl", "dirty work ddl"]
+        }
+      ],
+      "expected": [
+        {
+        "type": "common",
+        "rules": {
+          "func": "is_true",
+          "parameters": []
+        }
+        }]
+    }
+  }
+  

@@ -1,0 +1,44 @@
+{
+    "id": "clock_4",
+    "system_img": "default",
+    "instruction": "In the Clock App, set an alarm for 3:30 PM on Monday and Sunday labeled 'Paper Reading', using the 'Silk' sound. Then, turn on this alarm.",
+    "config": [
+      {
+        "type": "cmd",
+        "parameters": {
+          "command": [
+            "open -a 'Clock'"
+          ]
+        }
+      }
+    ],
+    "related_apps": [
+      "clock"
+    ],
+    "evaluator": {
+      "func": ["clock_list_alarms"],
+      "conj": "and",
+      "parameters": [
+        {
+        }
+      ],
+      "expected": [
+      {
+        "type": "common",
+        "rules": {
+          "func": "find_dict",
+          "parameters": [
+            {
+              "time": "3:30PM",
+              "label": "Paper Reading",
+              "repeat": "Sun and Mon",
+              "sound": "Silk",
+              "enabled": true
+            }
+          ]
+        }
+      }
+      ]
+    }
+  }
+  

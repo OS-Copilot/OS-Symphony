@@ -1,0 +1,47 @@
+{
+    "id": "finder_4",
+    "system_img": "default",
+    "instruction": "In Finder, navigate to the folder located at /Users/Shared/example_test. Then, copy all files that are 100KB or smaller into the /Users/Shared directory. Finally, record the number of files that meet this condition in /Users/Shared/cnt_file.txt, writing only a single number.",
+    "config": [
+      {
+        "type": "cmd",
+        "parameters": {
+          "command": [
+            "open -a 'Finder'"
+          ]
+        }
+      }
+    ],
+    "related_apps": [
+      "finder"
+    ],
+    "evaluator": {
+      "func": ["finder_check_file_exists", "finder_read_file_contents"],
+      "conj": "and",
+      "parameters": [
+        {
+            "file_path": ["/Users/Shared/file_a.dat", "/Users/Shared/file_c.dat", "/Users/Shared/cnt_file.txt"]
+        },
+        {
+            "file_path": "/Users/Shared/cnt_file.txt"
+        }
+      ],
+      "expected": [
+        {
+            "type": "common",
+            "rules": {
+            "func": "is_true",
+            "parameters": []
+        }
+        },
+        {
+            "type": "common",
+            "rules": {
+            "func": "exact_match",
+            "parameters": ["2"]
+            }
+        }
+        ]
+    }
+  }
+  

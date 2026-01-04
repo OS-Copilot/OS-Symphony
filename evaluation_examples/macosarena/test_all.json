@@ -1,0 +1,85 @@
+{
+    "calendar": [
+        "1",
+        "2",
+        "3"
+    ],
+    "clock": [
+        "1",
+        "2",
+        "3"
+    ],
+    "finder": [
+        "1",
+        "2",
+        "3"
+    ],
+    "mac_system_settings": [
+        "1",
+        "2"
+    ],
+    "multi_app": [
+        "calendar_multi_1",
+        "calendar_multi_2",
+        "calendar_multi_3",
+        "clock_multi_1",
+        "clock_multi_2",
+        "clock_multi_3",
+        "clock_multi_4",
+        "finder_multi_1",
+        "finder_multi_2",
+        "finder_multi_3",
+        "finder_multi_4",
+        "finder_multi_5",
+        "notes_multi_1",
+        "notes_multi_2",
+        "notes_multi_3",
+        "notes_multi_4",
+        "notes_multi_5",
+        "reminders_multi_1",
+        "reminders_multi_2",
+        "reminders_multi_3",
+        "reminders_multi_4",
+        "reminders_multi_5",
+        "safari_multi_1",
+        "safari_multi_2",
+        "safari_multi_3",
+        "setting_multi_1",
+        "setting_multi_2",
+        "setting_multi_3",
+        "terminal_multi_1",
+        "terminal_multi_2",
+        "terminal_multi_3",
+        "terminal_multi_4",
+        "terminal_multi_5",
+        "terminal_multi_6",
+        "terminal_multi_7"
+    ],
+    "notes": [
+        "1",
+        "2",
+        "3",
+        "4"
+    ],
+    "reminders": [
+        "1",
+        "2",
+        "3"
+    ],
+    "safari": [
+        "1",
+        "2",
+        "3"
+    ],
+    "terminal": [
+        "1",
+        "2",
+        "3",
+        "4"
+    ],
+    "vscode": [
+        "1",
+        "2",
+        "3"
+    ]
+}

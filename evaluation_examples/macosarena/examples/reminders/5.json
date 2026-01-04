@@ -1,0 +1,39 @@
+{
+    "id": "reminders_5",
+    "system_img": "default",
+    "instruction": "Please set a reminder called \"abstract deadline\" for June 10, 2026.",
+    "config": [
+      {
+        "type": "cmd",
+        "parameters": {
+          "command": [
+            "open -a 'Reminders'"
+          ]
+        }
+      }
+    ],
+    "related_apps": [
+      "safari",
+      "reminder"
+    ],
+    "evaluator": {
+        "func": ["reminders_check_on_date"],
+        "conj": "and",
+        "parameters": [
+            {
+                "reminder_name": "abstract deadline",
+                "date_str": "20260610"
+            }
+        ],
+        "expected": [
+            {
+                "type": "common",
+                "rules": {
+                    "func": "is_true",
+                    "parameters": []
+                }
+            }
+        ]
+      }
+}
+

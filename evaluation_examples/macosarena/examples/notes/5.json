@@ -1,0 +1,46 @@
+{
+    "id": "notes_5",
+    "system_img": "default",
+    "instruction": "In the Notes app, create a new note titled \"Attachment Verification\" and ensure it includes an attachment named \"attachment.txt\" and contains the text \"This note is used to confirm that the attachment has been successfully added and can be accessed from within the note.\".",
+    "config": [
+      {
+        "type": "cmd",
+        "parameters": {
+          "command": [
+            "open -a 'Notes'"
+          ]
+        }
+      }
+    ],
+    "related_apps": [
+      "notes"
+    ],
+    "evaluator": {
+        "func": ["notes_list_attachment_names_by_note_name", "notes_get_note_plaintext_by_name"],
+        "conj": "and",
+        "parameters": [
+          {
+            "note_name": "Attachment Verification"
+          },
+          {
+            "name": "Attachment Verification"
+          }
+        ],
+        "expected": [
+          {
+          "type": "common",
+          "rules": {
+            "func": "find_str_in_list",
+            "parameters": [["attachment.txt"]]
+          }
+          },
+          {
+          "type": "common",
+          "rules": {
+            "func": "find_str_in_list",
+            "parameters": ["This note is used to confirm that the attachment has been successfully added and can be accessed from within the note."]
+          }
+          }
+        ]
+      }
+}

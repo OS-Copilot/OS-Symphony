@@ -1,0 +1,38 @@
+{
+    "id": "reminders_3",
+    "system_img": "default",
+    "instruction": "In the Reminders app, open the \"Groceries\" list. Mark only \"Bananas\" and \"Milk\" as completed, mark all other existing reminders as not completed, and add a new reminder named \"Beef\", which should be left uncompleted.",
+    "config": [
+      {
+        "type": "cmd",
+        "parameters": {
+          "command": [
+            "open -a 'Reminders'"
+          ]
+        }
+      }
+    ],
+    "related_apps": [
+      "reminders"
+    ],
+    "evaluator": {
+      "func": ["reminders_check_all_completed_with_expected_items"],
+      "conj": "and",
+      "parameters": [
+        {
+          "list_name": "Groceries",
+          "preset_items": ["Milk", "Eggs", "Bread", "Apples", "Bananas", "Chicken Breast", "Rice", "Toilet Paper"]
+        }
+      ],
+      "expected": [
+        {
+        "type": "common",
+        "rules": {
+          "func": "is_true",
+          "parameters": []
+        }
+        }
+      ]
+    }
+  }
+  
