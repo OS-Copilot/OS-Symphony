@@ -2,12 +2,24 @@
 
 <div align="center">
   <img src="assets/logo.jpg" alt="OS-Symphony Logo" width="220px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-   <h1 style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 2.5em; margin-top: 10px;">
-    OS-Symphony
-  </h1>
-  <h3 style="font-style: italic; color: #555;">
+  
+  <br>
+  
+  <div style="display: inline-block; border-top: 2px solid #ddd; border-bottom: 2px solid #ddd; padding: 15px 0; margin: 15px auto; width: 80%; max-width: 500px;">
+    <h1 style="font-family: 'Palatino', 'Georgia', serif; 
+                font-size: 2.8em; 
+                margin: 0;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;">
+      OS-Symphony
+    </h1>
+  </div>
+  
+  <p style="font-size: 1.2em; color: #555; font-style: italic; margin-top: 10px;">
     A Holistic Paradigm for Generalist Computer-Using Agents
-  </h3>
+  </p>
 </div>
 
 **Official repository for the paper: [OS-SYMPHONY: A Holistic Framework for Robust and Generalist Computer-Using Agents]()**.
