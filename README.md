@@ -1,23 +1,19 @@
 
-
 <div align="center">
-  <img src="assets/logo.jpg" alt="OS-Symphony Logo" width="220px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="assets/logo.jpg" alt="OS-Symphony Logo" width="180px" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 10px;"/>
   
-  <br>
+  <h1 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+              font-size: 2.5em; 
+              font-weight: 700;
+              margin: 10px 0 5px 0;
+              color: #333;
+              letter-spacing: -0.5px;">
+    OS-SYMPHONY
+  </h1>
   
-  <div style="display: inline-block; border-top: 2px solid #ddd; border-bottom: 2px solid #ddd; padding: 15px 0; margin: 15px auto; width: 80%; max-width: 500px;">
-    <h1 style="font-family: 'Palatino', 'Georgia', serif; 
-                font-size: 2.8em; 
-                margin: 0;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;">
-      OS-Symphony
-    </h1>
-  </div>
+  <div style="width: 120px; height: 3px; background: linear-gradient(to right, #4facfe, #00f2fe); margin: 5px auto 15px;"></div>
   
-  <p style="font-size: 1.2em; color: #555; font-style: italic; margin-top: 10px;">
+  <p style="font-size: 1.1em; color: #666; font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.4;">
     A Holistic Paradigm for Generalist Computer-Using Agents
   </p>
 </div>
