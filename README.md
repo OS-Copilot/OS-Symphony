@@ -1,5 +1,4 @@
 
-
 <div align="center">
   <img src="assets/logo.jpg" alt="OS-Symphony Logo" width="220px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
    <h1 style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 2.5em; margin-top: 10px;">
