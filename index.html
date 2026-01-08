@@ -120,7 +120,7 @@
             </div>
             <div class="icon-item">
               <img src="./static/img/icons/visual.svg" alt="Visual Representation Icon">
-              <div><strong>Multimodal Searcher</strong>: Implements a <strong>"See-and-Act"</strong> paradigm to autonomously acquire and synthesize up-to-date tutorial knowledge like human, designed to harvest rich visual knowledge inherent in GUI documentations.</div>
+              <div><strong>Multimodal Searcher</strong>: Implements a <strong>"SeeAct"</strong> paradigm to autonomously acquire and synthesize up-to-date tutorial knowledge like human, designed to harvest rich visual knowledge inherent in GUI documentations.</div>
             </div>
             <!-- <div class="icon-item">
               <img src="./static/img/icons/data.svg" alt="Instruction Tuning Data Icon">
@@ -215,7 +215,7 @@
 
     <div class="d-admonition">
       <h4>👏 Congradulations!</h4>
-      <p>OS-Symphony has achieved a score of 65.8 on the OSWorld Official Evaluation (using GPT-5 + UI-TARS-1.5-7B with 50 steps). As of 2026/01/04, this ranks <strong>5th</strong> overall, <strong>3rd</strong> among methods without multiple rollout, and <strong>1st</strong> under the 50-steps constraint!</p>
+      <p>OS-Symphony has achieved a score of 65.8 on the <a href="https://os-world.github.io/">OSWorld Official Evaluation</a> (using GPT-5 + UI-TARS-1.5-7B with 50 steps). As of 2026/01/04, this ranks <strong>5th</strong> overall, <strong>3rd</strong> among methods without multiple rollout, and <strong>1st</strong> under the 50-steps constraint!</p>
     </div>
 
     <blockquote>
@@ -235,7 +235,7 @@
     <ol class="text">
       <li><strong><a href="#searcher">&sect;Orchestrator</a></strong>: Acts as the system's brain, responsible for task understanding and action prediction.</li>
       <li><strong><a href="#searcher">&sect;Reflection-Memory Agent</a></strong>: Compresses execution trajectories to maintain long-term memory and facilitates trajectory-level reflection, ensuring the long-horizon robustness. </li>
-      <li><strong><a href="#searcher">&sect;Versatile Tool-Agents</a></strong>: Consists of Ground, Code, and <strong>Search Agent</strong>, where the Search Agent implements a "See-and-Act" paradigm that enables agents to autonomously acquire knowledge in a human-like manner within a independent sandboxed Chrome environment, and then generate a step-by-step, up-to-date tutorial.</li>
+      <li><strong><a href="#searcher">&sect;Versatile Tool-Agents</a></strong>: Consists of Ground, Code, and <strong>Search Agent</strong>, where the Search Agent implements a "SeeAct" paradigm that enables agents to autonomously acquire knowledge in a human-like manner within a independent sandboxed Chrome environment, and then generate a step-by-step, up-to-date tutorial.</li>
     </ol>
     </p>
 
@@ -296,7 +296,7 @@
     <img src="public/framework.GIF" width="100%">
 
     <p class="text">
-      When reveiving a task from User, the Orchestrator first processes trajectory feedback from the RMA indicating execution stagnation (e.g. a loop caused by a Chrome version mismatch between task environment and VLM's pre-training knowledge) and a Lack of Tutorial error. To resolve this, the Orchestrator calls the Search Agent to acquire a tutorial in a human-like manner within a independent sandboxed Chrome environment. Actions are summarized and updated in the RMA, forming a complete closed loop. Furthermore, OS-Symphony supports cross-platform desktop environments, achieving a omni-CUA solution.
+      OS-Symphony comprises three synergistic components: an Orchestrator, specialized Tool Agents, and a Reflection-Memory Agent (RMA). In the case shown above, the Orchestrator first interprets feedback from the RMA, which identifies execution stagnation caused by a Chrome version mismatch between the task environment and the VLM's pre-training knowledge, together with a Lack of Tutorial error. It then invokes the Searcher to retrieve a relevant tutorial, and following this guidance, successfully completes the task, achieving a closed-loop self-improvement cycle.
     </p>
 
     <!-- <ol class="text">
@@ -310,7 +310,7 @@
     <h1 class="text">Reflection-Memory Agent</h1>
 
     <p class="text">
-      The RMA serves to offload memory pressure from the Orchestrator. In our framework, the Orchestrator retains full dialogue and screenshots for only the most recent K turns to maintain short-term precision. In contrast, the RMA stores the entire but compressed, filtered interaction history. Based on long-term memory, the RMA evaluates the Orchestrator's progress at every step, generating a trajectory-level feedback based on the Reflection Message Protocol.  
+      Current CUA frameworks suffer from intent drift and insufficient error awareness when executing long-horizon tasks, due to the lack of a concise yet effective memory mechanism. To address this, we introduce a Reflection-Memory Agent (RMA) that manages a milestone-driven long-term memory, which is primarily responsible for alleviating the contextual memory overhead of the Orchestrator.
     </p>
 
     <img src="public/rma.GIF" width="100%">
@@ -318,7 +318,7 @@
     <h1 class="text">Visual-Centric Searcher </h1>
 
     <p class="text">
-      We introduce a "Visual-Centric Search as a Tool" paradigm, where our Searcher employs a VLM-driven "See-and-Act" strategy to directly interact with rendered pages and synthesize tutorials. This approach addresses two critical deficiencies in RAG for CUAs. First, it retains the vital visual context often lost in text-based parsing. Second, it resolves the misalignment between static retrieval and dynamic needs: unlike standard RAG, our method treats search as an on-demand capability, ensuring the agent actively seeks knowledge only when execution gaps arise.
+      We introduce a "Visual-Centric Search as a Tool" paradigm, where our Searcher employs a VLM-driven "SeeAct" strategy to directly interact with rendered pages and synthesize tutorials. This approach addresses two critical deficiencies in RAG for CUAs. First, it retains the vital visual context often lost in text-based parsing. Second, it resolves the misalignment between static retrieval and dynamic needs: unlike standard RAG, our method treats search as an on-demand capability, ensuring the agent actively seeks knowledge only when execution gaps arise.
       <br> An example is shown below.
     </p>
 
@@ -799,7 +799,7 @@
             </table>
           </div>
           <figcaption style="text-align: center; width: 140%;">
-            Table 2: Performance on WindowsAgentArena benchmarks.
+            Table 2: Performance on MacOSArena benchmarks.
           </figcaption>
         </div>
       </div>
@@ -890,7 +890,7 @@
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h1 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h1>
       <p class="text">
-        In this work, we presented <strong>OS-Symphony</strong>, a holistic Compuuter-Using Agent (CUA) framework containing an Orchestrator that synergistically coordinates specialized modules, to address the two challenges of long-horizon robustness and domain generalization. To mitigate the visual loss inherent in extended workflows, our <strong>Reflection-Memory Agent</strong> employs a milestone-driven strategy for granular memory curation, enabling retrospective auditing to rectify errors such as intent drift and loops. Besides, we employ the Versatile Tool Agents featuring a <strong>Multimodal Searcher</strong> that transcends text-based retrieval limitations by adopting an active "See-and-Act" paradigm, synthesizing high-fidelity, visually aligned tutorials for unseen environments. Extensive experiments confirm that OS-Symphony not only achieves state-of-the-art performance across diverse operating systems but also proves that complex problems can be effectively solved using open-source VLMs. 
+        In this work, we presented <strong>OS-Symphony</strong>, a holistic Compuuter-Using Agent (CUA) framework containing an Orchestrator that synergistically coordinates specialized modules, to address the two challenges of long-horizon robustness and domain generalization. To mitigate the visual loss inherent in extended workflows, our <strong>Reflection-Memory Agent</strong> employs a milestone-driven strategy for granular memory curation, enabling retrospective auditing to rectify errors such as intent drift and loops. Besides, we employ the Versatile Tool Agents featuring a <strong>Multimodal Searcher</strong> that transcends text-based retrieval limitations by adopting an active "SeeAct" paradigm, synthesizing high-fidelity, visually aligned tutorials for unseen environments. Extensive experiments confirm that OS-Symphony not only achieves state-of-the-art performance across diverse operating systems but also proves that complex problems can be effectively solved using open-source VLMs. 
       </p>
     </div>
 
