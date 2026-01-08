@@ -304,7 +304,6 @@ class PROCEDURAL_MEMORY:
 
 
         for tool_name, tool_config in config.get('tools', {}).items():
-            # 如果工具被显式禁用，则跳过
             if tool_config and tool_config.get('enabled') is False:
                 continue
             if tool_name in skipped_actions:

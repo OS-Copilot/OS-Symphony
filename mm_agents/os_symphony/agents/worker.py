@@ -296,7 +296,7 @@ class Worker(BaseModule):
         logger.info("PLAN:\n %s", plan)
 
         # Extract the next action from the plan
-        # 此时的plan code e.g. agent.click('xxxxx', 1)
+        # plan code e.g. agent.click('xxxxx', 1)
         plan_code = parse_code_from_string(plan)
         action_dict, coordinates = None, None
         try:

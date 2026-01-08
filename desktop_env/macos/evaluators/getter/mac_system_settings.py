@@ -107,7 +107,7 @@ def settings_ally_debug(env, expected_voice="British (Voice 4)") -> bool:
         #     end repeat
         # end try
 
-# 将脚本通过标准输入传给 osascript
+    # Pass the script to osascript via standard input
     try:
         command = f"osascript -e '{apple_script}'"
         print(apple_script[851:890])

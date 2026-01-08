@@ -39,7 +39,7 @@ class PythonController:
         try:
             with io.BytesIO(data) as b:
                 with Image.open(b) as img:
-                    img.verify() # 验证文件头完整性，不解码像素，速度快
+                    img.verify() # Verify header integrity without decoding pixels for faster performance.
             # PNG magic
             if len(data) >= 8 and data[:8] == b"\x89PNG\r\n\x1a\n":
                 return True

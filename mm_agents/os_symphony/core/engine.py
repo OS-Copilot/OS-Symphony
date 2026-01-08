@@ -53,13 +53,8 @@ class LMMEngineOpenAI(LMMEngine):
             )
         organization = self.organization or os.getenv("OPENAI_ORG_ID")
         
-        # H 集群认证 最后再删！！！！！！
-        if self.model.lower().startswith("ui") or self.model.lower().startswith("qwen") or self.model.lower().startswith("scale") or self.model.lower().startswith("holo"):
-            custom_headers = {
-                "Authorization": "Basic NWFkMzQxMDBlZTA1NWE0YmFlNjYzNzBhNWU2ODNiYWM6NjA3ZGU4MjQ5NjU3YTNiM2JkMDM2ZGM5NmQ0YzBiMmY="
-            }
-        else:
-            custom_headers = {}
+        
+        custom_headers = {}
         if not self.llm_client:
             if not self.base_url:
                 self.llm_client = OpenAI(
@@ -379,12 +374,7 @@ class LMMEnginevLLM(LMMEngine):
                 "An endpoint URL needs to be provided in either the endpoint_url parameter or as an environment variable named vLLM_ENDPOINT_URL"
             )
         if not self.llm_client:
-            USERNAME = "5ad34100ee055a4bae66370a5e683bac"
-            PASSWORD = "607de8249657a3b3bd036dc96d4c0b2f"
-            auth_string = f"{USERNAME}:{PASSWORD}".encode("utf-8")
-            basic_auth_encoded = base64.b64encode(auth_string).decode("utf-8")
-            basic_auth_header = f"Basic {basic_auth_encoded}"
-            self.llm_client = OpenAI(base_url=base_url, api_key=api_key, default_headers={"Authorization": basic_auth_header},)
+            self.llm_client = OpenAI(base_url=base_url, api_key=api_key)
         # Use self.temperature if set, otherwise use the temperature argument
         temp = self.temperature if self.temperature is not None else temperature
         completion = self.llm_client.chat.completions.create(

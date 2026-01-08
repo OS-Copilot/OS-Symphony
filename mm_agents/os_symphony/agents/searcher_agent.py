@@ -169,7 +169,7 @@ class VLMSearcherAgent(SearcherAgent):
                 if agent is None:
                     continue
                 # keep latest k images
-                # @Yang: keep the first main agent image
+                # keep the first main agent image
                 img_count = 0
                 for i in range(len(agent.messages) - 1, 1, -1):
                     for j in range(len(agent.messages[i]["content"]) - 1, -1, -1):

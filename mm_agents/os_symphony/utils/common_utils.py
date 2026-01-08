@@ -25,7 +25,6 @@ def create_pyautogui_code(agent, code: str, obs: Dict) -> Tuple[str, dict | None
     Returns:
         exec_code (str): The pyautogui code to execute the grounded action.
         coordinate (List): The coordinate of the action, a list such as [x1, y1, x2, y2, x3, y3...]. Because may appear more than one coordinate in one action.
-        Modified by Yang. 
     Raises:
         Exception: If there is an error in evaluating the code.
     """

@@ -102,7 +102,6 @@ groq==0.32.0
 grpcio==1.75.1
 grpcio-status==1.71.2
 # Editable install with no version control (gui-agents==0.3.1)
--e /nvme/yangbowen/yangbowen/OSWorld/Agent-S
 gymnasium==0.28.1
 h11==0.16.0
 hf-xet==1.1.10

@@ -35,14 +35,14 @@
 
 - **[2026-01-04]** 🎉 **Congratulations:** OS-Symphony has achieved a score of **65.8** on the [OSWorld Official Evaluation](https://os-world.github.io/) (using GPT-5 + UI-TARS-1.5-7B with 50 steps). As of now, this ranks **5th** overall, **3rd** among methods without multiple rollout, and **1st** under the 50-steps constraint！
 
-  > **Note:** The evaluation results reported in our paper are lower due to limitations within the virtual machine environment.  You are allowed to compare against the metrics in our paper, we highly encourage comparing against the official evaluation results.
+  > **Note:** The evaluation results reported in our paper are lower due to limitations within the virtual machine environment. While you are allowed to compare against the metrics in our paper, we **highly encourage** comparing against the official evaluation results.
 
 ## 💡 Overview
 
 **OS-Symphony** is a holistic framework designed to address the robustness and generalization challenges faced by current Computer-Using Agents (CUAs). It introduces an **Orchestrator** that coordinates two key innovations:
 
 1.  **Reflection-Memory Agent (RMA):** Utilizes milestone-driven long-term memory and a structured message protocol to enable trajectory-level self-correction, effectively mitigating visual context loss in long-horizon tasks.
-2.  **Versatile Tool Agents:** Features a **Multimodal Searcher** that adopts a "See-and-Act" paradigm to navigate the web and synthesize live, visually aligned tutorials, resolving fidelity issues in out-of-distribution scenarios.
+2.  **Versatile Tool Agents:** Features a **Multimodal Searcher** that adopts a "SeeAct" paradigm to navigate the web and synthesize live, visually aligned tutorials, resolving fidelity issues in out-of-distribution scenarios.
 
 By synergizing these components, OS-Symphony achieves robust automation across diverse operating systems and complex workflows.
 
@@ -50,7 +50,7 @@ By synergizing these components, OS-Symphony achieves robust automation across d
 
 ## 📊 Results
 
-OS-Symphony establishes new SOTA performance across three major benchmarks.
+OS-Symphony establishes new SOTA performance across three major benchmarks. 
 
 ### 🐧 OSWorld-Verified (Ubuntu)
 
@@ -75,7 +75,6 @@ OS-Symphony establishes new SOTA performance across three major benchmarks.
 
 | Backbone | Steps | Success Rate |
 | :--- | :---: | :---: |
-| GPT-5 | 50 | 41.3% |
 | **GPT-5-Mini** | **50** | **46.0%** |
 | Qwen3-VL-32B-Instruct | 50 | 19.1% |
 

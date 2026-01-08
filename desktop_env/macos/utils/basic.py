@@ -59,7 +59,7 @@ class ActionTransformer(ast.NodeTransformer):
         return None
 
     def transform_write(self, node):
-        # 提取 message 内容
+        # extract message content
         message_expr = None
         for kw in node.keywords:
             if kw.arg == "message":
@@ -68,7 +68,7 @@ class ActionTransformer(ast.NodeTransformer):
         if message_expr is None and node.args:
             message_expr = node.args[0]
         if message_expr is None:
-            return node  # 无可写内容，不处理
+            return node 
 
         return ast.Expr(value=ast.Call(
             func=ast.Attribute(
@@ -82,12 +82,12 @@ class ActionTransformer(ast.NodeTransformer):
 
     def transform_doubleclick(self, node):
         x = y = None
-        # 支持位置参数
+        # support positional args
         if len(node.args) >= 1:
             x = node.args[0]
         if len(node.args) >= 2:
             y = node.args[1]
-        # 支持关键字参数
+        # support keywords args
         for kw in node.keywords:
             if kw.arg == "x":
                 x = kw.value
@@ -146,7 +146,7 @@ class ActionTransformer(ast.NodeTransformer):
 
         new_nodes.append(click_expr)
 
-        # 用 ast.Module 包装为 block 再展开
+        # Wrap it as a block using ast.Module, then unpack
         return new_nodes
 
 def transform_pyautogui_line(line):

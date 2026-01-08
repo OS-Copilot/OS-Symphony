@@ -195,7 +195,7 @@ class DesktopEnv(gym.Env):
         self._step_no: int = 0
         self.action_history: List[Dict[str, any]] = []
 
-    # 将物理上的初始化和逻辑上的初始化解耦，便于传参
+    # Decouple physical instantiation from logical initialization for easier parameter passing.
     def start(self):
         # Initialize emulator and controller
         if not self.manager and not self.provider:
@@ -269,7 +269,7 @@ class DesktopEnv(gym.Env):
         if self.provider:
             self.provider.stop_emulator(self.path_to_vm)
 
-    # 每次新任务时先执行该函数
+    # execute this function when starting a new task
     def reset(self, task_config: Optional[Dict[str, Any]] = None, seed=None, options=None) -> Dict[str, Any]:
         
         # Reset to certain task in OSWorld
@@ -314,14 +314,13 @@ class DesktopEnv(gym.Env):
                     ["gsettings", "set", "org.gnome.system.proxy.https", "host", f"'{self.proxy_ip}'"],
                     ["gsettings", "set", "org.gnome.system.proxy.https", "port", f"{self.proxy_port}"]
                 ]
-                # Notice: Modified by Yang. Global Proxy set up!
+                # Global Proxy set up!
                 for system_proxy_command in system_proxy_commands:
                     self.setup_controller._execute_setup(system_proxy_command)
 
             if task_config is not None:
                 if task_config.get("proxy", False) and self.enable_proxy:
                     # If using proxy and proxy is enabled, set up the proxy configuration
-                    # 下面这么设置代理没用
                     self.setup_controller._proxy_setup(self.client_password)
                 self._set_task_info(task_config)
                 self.setup_controller.reset_cache_dir(self.cache_dir)

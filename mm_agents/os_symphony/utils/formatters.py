@@ -72,9 +72,6 @@ INTEGER_ANSWER_FORMATTER = lambda response: (
 
 
 def json_answer_check(response: str, required_fields: List[str]) -> bool:
-    """
-    一个只返回 True/False 的检查函数。
-    """
     try:
         answer_str = parse_code_from_string(response)
         

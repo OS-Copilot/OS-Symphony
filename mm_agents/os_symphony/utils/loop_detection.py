@@ -119,7 +119,7 @@ def _are_steps_similar_optimized(
     full_trajectory: List[StepBehavior],
     phash_threshold: int,
     ssim_threshold: float,
-    # 动作比较所需的参数
+    # args for comparing actions
     image_width: int,
     image_height: int,
     relative_coord_threshold: float,

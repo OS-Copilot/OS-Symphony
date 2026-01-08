@@ -35,7 +35,7 @@ def vscode_check_workspace_folders(env: MacOSEnv, expected_folder_list = ["1", "
 
     logger.info(f"Found workspace file: {workspace_path}")
 
-    # 下载 workspace 文件并解析
+    # download workspace file and parse
     local_path = "/tmp/current_workspace.code-workspace"
     try:
         env.connect_sftp()
@@ -161,7 +161,6 @@ print("__MODIFIED_JSON__:" + json.dumps(current_contents))
         logger.error(f"Failed to parse modified content JSON: {e}")
         return False
 
-    # 对比每个文件
     for fname in files:
         original = original_contents.get(fname)
         modified = modified_map.get(fname)
@@ -257,7 +256,7 @@ if __name__ == "__main__":
 #         macos_env,
 #         folder="~/Library/example_code1",
 #         files=["1.py", "2.txt"],
-#         original_contents=original_map  # 由 extract_original_file_contents() 得到
+#         original_contents=original_map  
 # )
 
     # print("✅ All files are correctly modified." if ok else "❌ Replacement incorrect.")

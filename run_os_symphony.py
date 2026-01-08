@@ -27,7 +27,7 @@ def prepare_worker_vm_paths(base_golden_path: str, worker_idx: int):
     # remove the '/' at the end
     base_golden_path = base_golden_path.rstrip(os.sep)
     
-    # get parent directory (like /nvme/yangbowen/vm_stroage/waa)
+    # get parent directory
     parent_dir = os.path.dirname(base_golden_path)
     
     # define the path of this worker

@@ -36,34 +36,32 @@ class MacOSEnv:
         self.mode = provider_name
         self.action_space = action_space
 
-        # SSH 配置
+        # SSH config
         self.username = 'pipiwu'
         self.password = '1234'
-        self.host_ip = "127.0.0.1" # Docker 映射到本地
-        self.ssh_port = -1  # 对应容器的 10022
-        self.vnc_port = -1  # 对应容器的 5901
+        self.host_ip = "127.0.0.1"
+        self.ssh_port = -1  # map to port 10022 on container
+        self.vnc_port = -1  # map to port 5901 on container
         self.ssh_port = -1
         
         self.ssh_client = None
         self.sftp_client = None
         self.task = None
         
-        # Docker 配置
+        # Docker 
         self.client = docker.from_env()
-        self.container = None # 保存容器对象
+        self.container = None 
         self.ram_size = "8G"
         self.cpu_cores = "4"
-        # 镜像文件路径
+        # path to image file
         self.mac_hdd_img_path = path_to_vm
         self.base_system_img_path = path_to_base_vm
 
-        # 端口锁文件
         temp_dir = Path(os.getenv('TEMP') if platform.system() == 'Windows' else '/tmp')
         self.lock_file = temp_dir / "mac_docker_port.lck"
 
 
     def _get_used_ports(self):
-        """获取当前系统所有被占用的端口"""
         system_ports = set(conn.laddr.port for conn in psutil.net_connections())
         docker_ports = set()
         try:
@@ -78,7 +76,6 @@ class MacOSEnv:
         return system_ports | docker_ports
 
     def _get_available_port(self, start_port: int, exclude_ports: set = None) -> int:
-        """寻找可用端口"""
         if exclude_ports is None:
             exclude_ports = set()
         used_ports = self._get_used_ports()
@@ -109,31 +106,29 @@ class MacOSEnv:
         
     def _reset_env(self):
         """
-        重置环境：停止旧容器 -> 分配端口 -> 启动新容器 -> 等待 SSH
+        Reset Environment: Stop old containers -> Allocate ports -> Start new containers -> Wait for SSH
         """
-        self._close_env() # 确保旧的被清理
+        self._close_env() 
 
         if self.mode != "docker":
             raise ValueError(f"Unsupported mode: {self.mode}")
 
         lock = FileLock(str(self.lock_file), timeout=LOCK_TIMEOUT)
         with lock:
-            # 1. 动态分配端口
+            # allocate ports dynamically 
             self.ssh_port = self._get_available_port(10022) 
             self.vnc_port = self._get_available_port(5901, exclude_ports={self.ssh_port})
             
             logger.info(f"Allocated Ports -> SSH: {self.ssh_port}, VNC: {self.vnc_port}")
 
-            # 2. 准备挂载卷 (Volumes)
-            # 对应 -v 参数
+            # prepare volumes
             volumes = {
                 '/tmp/.X11-unix': {'bind': '/tmp/.X11-unix', 'mode': 'rw'},
                 self.mac_hdd_img_path: {'bind': '/home/arch/OSX-KVM/mac_hdd_ng_src.img', 'mode': 'rw'},
                 self.base_system_img_path: {'bind': '/home/arch/OSX-KVM/BaseSystem_src.img', 'mode': 'rw'}
             }
 
-            # 3. 准备环境变量 (Environment)
-            # 对应 -e 参数
+            # prepare environment variables 
             environment = {
                 "EXTRA": "-vnc 0.0.0.0:1,password=off",
                 "CPU": "Haswell-noTSX",
@@ -145,21 +140,20 @@ class MacOSEnv:
                 "CPU_CORES": self.cpu_cores
             }
 
-            # 4. 准备设备 (Devices)
-            # 对应 --device /dev/kvm
+            # prepare devices)
             devices = ["/dev/kvm"] if os.path.exists("/dev/kvm") else []
             if not devices:
                 logger.warning("/dev/kvm not found. MacOS container might be extremely slow or fail.")
 
             try:
                 logger.info("Starting MacOS container...")
-                # 5. 启动容器 (对应 docker run 命令)
+                # start container (equal to docker run command) 
                 self.container = self.client.containers.run(
                     image="numbmelon/docker-osx-evalkit-auto:latest",
                     detach=True,       # -d
                     tty=True,          # -t
                     stdin_open=True,   # -i
-                    privileged=True,   # KVM 通常需要特权模式
+                    privileged=True,   # KVM usually needs priviledged mode
                     devices=devices,   # --device
                     ports={
                         '10022/tcp': self.ssh_port, # -p host:10022
@@ -175,11 +169,10 @@ class MacOSEnv:
                 self._close_env()
                 raise e
 
-        # 6. 等待 SSH 服务就绪
+        # wait for ssh 
         self._wait_for_ssh_ready()
     
     def _wait_for_ssh_ready(self, timeout=1000):
-        """等待容器启动并建立 SSH 连接"""
         logger.info("Waiting for SSH to become available...")
         start_time = time.time()
         while time.time() - start_time < timeout:
@@ -188,14 +181,14 @@ class MacOSEnv:
                 logger.info("SSH connection established successfully.")
                 return
             except Exception:
-                time.sleep(5) # 每 5 秒重试一次
+                time.sleep(5) # retry every 4 seconds
         
-        # 超时处理
+        # timeout
         self._close_env()
         raise TimeoutError("Failed to SSH into the MacOS container after timeout.")
     
     def _close_env(self):
-        """清理环境：关闭 SSH，停止并删除容器"""
+        """clean the environment: close SSH, stop and remove containers"""
         self.close_connection()
         
         if self.container:
@@ -212,7 +205,6 @@ class MacOSEnv:
                 self.vnc_port = -1
 
     def get_connection_info(self):
-        """返回连接信息供外部使用"""
         return {
             "ip": self.host_ip,
             "ssh_port": self.ssh_port,
@@ -351,7 +343,7 @@ class MacOSEnv:
         """
         Upload a temporary Python script to the remote macOS and execute it safely.
         """
-        # 生成远程临时脚本路径
+
         remote_tmp_path = f"/tmp/task_script_{uuid.uuid4().hex}.py"
         assert self.task is not None
         lines = []
@@ -382,7 +374,6 @@ class MacOSEnv:
             logger.info(f"[exec output] {stdout}")
             logger.info(f"[exec error] {stderr}")
 
-            # 清理远程脚本
             self.run_command(f"rm -f {remote_tmp_path}")
             return {
                 "status": "success",

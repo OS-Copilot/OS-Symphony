@@ -29,35 +29,34 @@ class DesktopEnv(gym.Env):
         path_to_vm: str,
         path_to_base_vm: str,
         action_space: str = "pyautogui",
-        provider_name: str = "docker", # 默认为 docker
+        provider_name: str = "docker", # default to docker
     ):
         self.macos_env = MacOSEnv(path_to_vm=path_to_vm, path_to_base_vm=path_to_base_vm, provider_name=provider_name, action_space=action_space)
         self.controller = PythonController(self.macos_env)
 
-    # 必要
+    # necessary
     def _get_obs(self):
         
-        # 只要返回 screenshot 就行, 其余字段可有可无
+        # only screenshot matters
         return {
             "screenshot": self.macos_env.get_screenshot()
         }
 
-    # 必要 重置环境 + 初始化任务
+    # necessary (reset environment + initialize tasks) 
     def reset(self, task_config: Optional[Dict[str, Any]] = None):
         self.macos_env._reset_env()
         self.macos_env.init_task(task_json_config=task_config)
         return
 
-    # 必要
+    # necessary
     def step(self, action, pause=3):
-        # observation, reward, done, info = "必要", "没用", "必要", "没用"
         return self.macos_env.step(action, pause)
     
-    # 必要
+    # necessary
     def evaluate(self):
         return self.macos_env.evaluate_task()
 
-    # 必要, 关闭并杀死docker
+    # necessary, stop and kill docker
     def close(self):
         self.macos_env._close_env()
         return
