@@ -239,6 +239,8 @@
     </ol>
     </p>
 
+    <img src="public/teaser.png" alt="">
+
     <p class="text abstract">
       OS-Symphony is a cross-platform CUA supporting three mainstream OSs, achieving a omni-CUA solution. It achieves success rates of 65.8 on OSWorld (100-step limit), 63.6 on WindowsAgentArena (50-step limit), 46.0 on MacOSArena (50-step limit), all setting new SOTA results.
       <br><br>
@@ -784,7 +786,7 @@
                 <tr>
                   <td>OS-Symphony w/ Qwen3-VL-32B-Instr.</td>
                   <td>50</td>
-                  <td>32.14</td>
+                  <td><u>32.14</u></td>
                   <td><u>8.57</u></td>
                   <td><u>19.05</u></td>
                 </tr>
@@ -799,19 +801,35 @@
             </table>
           </div>
           <figcaption style="text-align: center; width: 140%;">
-            Table 2: Performance on MacOSArena benchmarks.
+            Table 3: Performance on MacOSArena benchmarks.
           </figcaption>
         </div>
       </div>
       </div>
       <p class="text">
-        As shown in Table 3, OS-Symphony achieves a new <strong>SOTA</strong> score of 46.03 on MacOSArena, significantly outperforming the baseline models. Consequently, we can conclude that OS-Symphony delivers robust performance <strong>across all operating systems</strong>, reflecting its remarkable OS-level generalization capabilities.
+        As shown in Table 3, OS-Symphony achieves a new <strong>SOTA</strong> score of 46.03 on MacOSArena, significantly outperforming the baseline models. Consequently, we can conclude that OS-Symphony delivers robust performance <strong>across all mainstream operating systems</strong>, reflecting its remarkable OS-level generalization capabilities.
       </p>
 
       
       <!-- ==================== Analysis!!! ==================== -->
       <div> 
         <h1 class="text" id="sec:analysis">Analysis</h1>
+
+
+
+        <!-- ==================== 关于 pass@k 的讨论 ==================== -->
+        <h2 class="text">What is the performance ceiling of our model?</h2>
+
+        <p class="text">
+          We conduct the Pass@K experiment. To explore the performance limits, we incrementally increased the temperature of both the Orchestrator and RMA by 0.1 at each pass.  All experiments are carried out with GPT-5 + UI-TARS-1.5-7B and 100-step limit.
+        </p>
+
+        <img src="public/pass_k_v2.png" alt="" style="width: 100%;">
+
+        <p class="text">
+          As shown above, OS-Symphony surpasses human performance (72.4%) at Pass@2 (74.14%) and achieves a success rate approaching 80% at Pass@5 (79.4%) on OSWorld. his demonstrates, first, that our framework has a high performance ceiling and can attain excellent results through such test-time scaling. Second, consistent with our analysis, zero-shot agentic frameworks exhibit substantial stochasticity on GUI tasks, which is evident in both our experimental results and qualitative observations. Future work should therefore prioritize improving deployment-time stability. 
+        </p>
+
 
         <!-- ==================== 关于 图片数量 的讨论 ==================== -->
         <h2 class="text">How Max Number of Images in Agent's Trajectory Impact Preformance?</h2>
@@ -820,7 +838,7 @@
           We examine the impact of the maximum number of images within the history trajectory on performance.  All experiments are carried out with Qwen3-VL-32B-Instruct and UI-TARS-1.5-7B
         </p>
 
-        <img src="public/traj_img_v2.png" alt="" style="width: 100%;">
+        <img src="public/traj_img_v3.png" alt="" style="width: 100%;">
 
         <p class="text">
           As shown above, the image count significantly influences the framework's effectiveness. An insufficient number of images fails to provide adequate context regarding operation history, whereas an excessive number leads to a surge in token consumption, thereby impairing the model's reasoning capabilities. The experimental results validate that our selected limit of 8 images is optimal, achieving the peak performance of 46.86.
@@ -867,7 +885,7 @@
       <h1 class="text" id="sec:case_study">Case Study</h1>
 
       <!-- ==================== 关于 Searcher 的成功case ==================== -->
-      <h2 class="text">A case showcasing the superiority of Visual-Centric Searcher.</h2>
+      <h2 class="text">A case showcasing the superiority of Multimodal Searcher.</h2>
 
       <p class="text">
         To better demonstrate the strengths of our framework, we conduct a qualitative analysis of specific success cases observed during experiments.
@@ -917,7 +935,7 @@
         }    
       </p>
     <d-footnote-list></d-footnote-list>
-    <h3>References</h3>
+    <!-- <h3>References</h3> -->
     <d-citation-list style="display: block;"></d-citation-list>
   </d-appendix>
   
