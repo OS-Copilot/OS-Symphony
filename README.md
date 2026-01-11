@@ -11,7 +11,7 @@
 
 **Official repository for the paper: [OS-SYMPHONY: A Holistic Framework for Robust and Generalist Computer-Using Agents]()**.
 
-[![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() ![License](https://img.shields.io/badge/License-MIT-blue) [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)]()
+[![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() ![License](https://img.shields.io/badge/License-MIT-blue) [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)](https://os-copilot.github.io/OS-Symphony/)
 
 ## 📑 Table of Contents
 - [🗞️ Updates](#-updates)
