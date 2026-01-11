@@ -115,6 +115,8 @@ body {
     font-size: 1.2rem;
 }
 
+
+/* 适配移动端的逻辑，调整h2标题 */
 @media (max-width: 768px) {
   .header-container {
     padding: 16px;
@@ -122,13 +124,13 @@ body {
   }
 
   .header-content h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 0.125em;
   }
   .header-content h2 {
-    font-size: 1.7em;
+    font-size: 1.5em;
     /* text no wrap */
-    white-space: nowrap;
+    white-space: normal;
     margin-top: 0;
   }
 
@@ -144,6 +146,41 @@ body {
     margin-right: auto;
   }
 }
+
+/* 适配移动端的逻辑，调整校徽 */
+@media (max-width: 768px) {
+  /* 1. Logo 容器改为水平滚动模式 */
+  .logos-between {
+    display: flex;
+    flex-wrap: nowrap !important;    /* 强制不换行 */
+    overflow-x: auto;                /* 允许水平滚动 */
+    justify-content: flex-start;     /* 滚动模式下推荐靠左，防止居中导致左边被切掉 */
+    gap: 15px;
+    padding-bottom: 5px;             /* 底部留一点空间 */
+    
+    /* 让 iOS 滚动更丝滑 */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* 隐藏丑陋的默认滚动条 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+  }
+  
+  /* 针对 Chrome/Safari 隐藏滚动条 */
+  .logos-between::-webkit-scrollbar {
+    display: none; 
+  }
+
+  /* 2. 图片样式 */
+  .logos-between img {
+    height: 50px !important; /* 高度你可以自己调整，50px在手机上比较合适 */
+    width: auto;
+    
+    /* ★关键属性：防止图片为了适应屏幕而被压扁 */
+    flex-shrink: 0; 
+  }
+}
+
 
 .teaser-video video {
   height: auto; /* Maintain the aspect ratio of the image */
