@@ -1498,27 +1498,19 @@ iframe {
 
 
 
-/* 引用相关 */
-d-cite sup {
-  color: #f4a261 !important; /* 你可以根据需要调整这个橙黄色的 HEX 值 */
-}
-
-/* 如果希望鼠标悬停时颜色有变化，可以添加这个 */
-d-cite sup:hover {
-  color: #e76f51; 
-}
-
-/* 强制设置悬浮框内的文字颜色为深色，背景为白色/浅色 */
+/* 强制修正悬浮框样式 */
 .d-cite-hover {
-  color: rgba(0, 0, 0, 0.8) !important;
-  background-color: white !important;
-  border: 1px solid #ddd !important;
-  padding: 10px !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+  background: white !important;
+  color: #333 !important;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2) !important;
+  border: 1px solid #eee !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-/* 针对悬浮框内的链接颜色 */
+/* 确保内部文字可见 */
+.d-cite-hover div, 
+.d-cite-hover span, 
 .d-cite-hover a {
-  color: #f4a261 !important;
-  text-decoration: none;
+  color: #333 !important;
 }
