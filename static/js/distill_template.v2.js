@@ -4427,13 +4427,14 @@ d-footnote-list a.footnote-backlink {
   left: 0;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: rgba(250, 250, 250, 0.95);
+  background-color: rgba(250, 250, 250);
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   box-sizing: border-box;
 
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  color: black;
 }
 
 </style>

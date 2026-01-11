@@ -1495,17 +1495,3 @@ iframe {
   font-size: 0.8em;
   letter-spacing: 1px;
 }
-
-
-
-
-d-hover-box, 
-  #hover-box {
-    color: #000000 !important; /* 强制将容器内的文字设为黑色 */
-    background-color: #ffffff !important; /* 确保背景是白色 (以防万一) */
-  }
-
-/* 既然是 Shadow DOM，通常颜色会继承，但为了保险，我们尝试让所有子元素也强制继承颜色 */
-d-hover-box * {
-    color: #000000 !important;
-}

@@ -962,33 +962,6 @@
       ["OS-Symphony w/ GPT-5", "100", "65.8", "/"],
     ]
   }).render(document.getElementById("wrapper"));
-
-  // 等待页面完全加载
-  window.addEventListener('load', function() {
-    // 1. 找到该元素
-    const hoverBox = document.getElementById('hover-box');
-    
-    // 2. 检查是否存在且有 Shadow DOM
-    if (hoverBox && hoverBox.shadowRoot) {
-      // 3. 创建一个新的 style 标签
-      const newStyle = document.createElement('style');
-      
-      // 4. 写入针对内部 .panel 的样式覆盖
-      // 注意：这里使用了 !important 确保覆盖原有的样式
-      newStyle.textContent = `
-        .panel {
-          background-color: #ffffff !important;  /* 强制背景为纯白 */
-          color: #000000 !important;             /* 强制文字为纯黑 */
-          border: 1px solid #e0e0e0 !important;  /* 可选：加个边框让它在黑背景下更明显 */
-        }
-      `;
-      
-      // 5. 将这段样式插入到 Shadow DOM 内部
-      hoverBox.shadowRoot.appendChild(newStyle);
-      
-      console.log('Distill hover-box styles patched!');
-    }
-  });
 </script>
 
 </html>
