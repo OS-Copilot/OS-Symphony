@@ -1498,19 +1498,14 @@ iframe {
 
 
 
-/* 强制修正悬浮框样式 */
-.d-cite-hover {
-  background: white !important;
-  color: #333 !important;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2) !important;
-  border: 1px solid #eee !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
 
-/* 确保内部文字可见 */
-.d-cite-hover div, 
-.d-cite-hover span, 
-.d-cite-hover a {
-  color: #333 !important;
+d-hover-box, 
+  #hover-box {
+    color: #000000 !important; /* 强制将容器内的文字设为黑色 */
+    background-color: #ffffff !important; /* 确保背景是白色 (以防万一) */
+  }
+
+/* 既然是 Shadow DOM，通常颜色会继承，但为了保险，我们尝试让所有子元素也强制继承颜色 */
+d-hover-box * {
+    color: #000000 !important;
 }
