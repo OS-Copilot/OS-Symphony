@@ -914,7 +914,7 @@ if __name__ == "__main__":
         test_all_meta = {args.domain: test_all_meta[args.domain]}
 
 
-    logger.info(f"====================\nExperiment on {args.benchmark} is started\n====================")
+    logger.info(f"====================\nExperiment on {args.benchmark} is started!\n====================")
     test_file_list = get_unfinished(
         target_dir=args.result_dir,
         total_file_json=test_all_meta,
@@ -932,6 +932,5 @@ if __name__ == "__main__":
         args, 
         test_file_list
     )
-    logger.info(f"====================\nExperiment on {args.benchmark} is started\n====================")
-
+    logger.info(f"====================\nExperiment on {args.benchmark} is ended!\n====================")
     logger.info(f"====================\nExperiment {args.exp_name} is totally ended!\n====================")
