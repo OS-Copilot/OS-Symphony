@@ -8,6 +8,7 @@
     A Holistic Framework for Robust and Generalist Computer-Using Agents
   </h3>
 </div>
+
 **Official repository for the paper: 《OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agents》**.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)](https://os-copilot.github.io/OS-Symphony/) ![License](https://img.shields.io/badge/License-MIT-blue)
