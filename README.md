@@ -165,7 +165,7 @@ Then, you can open a webpage([http://0.0.0.0:10000](http://0.0.0.0:10000)) and c
 1. **Unified Cross-Platform Evaluation:** We decouple the  agent logic from the OS environment, providing a unified interface to  evaluate agents across Linux, Windows, and MacOS seamlessly.
 2. **Enhanced Robustness:** We have addressed numerous environment instability issues and bugs found in the original codebases of the supported benchmarks.
 
-   > ***Important***：This repository includes modifications to the OSWorld environment. If  you wish to utilize a codebase identical to the official version for a  fair comparison, please refer to our implementation [submitted to the official OSWorld repository](https://github.com/xlang-ai/OSWorld/blob/main/run_os_symphony.sh); alternatively, migrating it to our  framework is straightforward. Please note that our official benchmark results were obtained using the official repository, while the all results reported in the paper are based on the current repository.
+   > ***Important***：This repository includes modifications to the OSWorld environment. If you wish to utilize a codebase identical to the official version for a  fair comparison, please refer to our implementation [submitted to the official OSWorld repository](https://github.com/xlang-ai/OSWorld/blob/main/run_os_symphony.sh); alternatively, migrating it to our  framework is straightforward. Please note that our official results were obtained using the official repository, while the all results reported in the paper are based on the current repository.
 
 3. **Extensibility:** Support for defining more custom environments and tasks.
 4. **Custom Workflows:** Flexible architecture allowing to customize Agent workflows and tool configurations.
