@@ -3,12 +3,11 @@ body {
 }
 
 .header-wrapper {
-    /* max-width: 1200px; */
-    /* background-color: #265073; */
-
-    /* background: linear-gradient(127deg, #265073 0%, #596FB7 45%, #C6CF9B 70%, rgb(244,234,203) 100%); */
-    /* background: linear-gradient(-235deg, #000000 10%, #122153 55%, #FEAE6F 85%, rgb(244,234,203) 100%); */
-    background: linear-gradient(138deg, #000000 10%, #9199b1 55%, #FEAE6F 85%, rgb(253 241 204) 100%);
+    /* 初版 */
+    background: linear-gradient(138deg, #2b1313 10%, #A93226 55%, #FEAE6F 85%, rgb(253 241 204) 100%);
+    /* 砖红色 -> 琥珀金 -> 米白色 */
+    /* background: linear-gradient(138deg, #A93226 55%, #F5B041 85%, rgb(253 241 204) 100%); */
+    
 }
 
 .header-container {
@@ -91,6 +90,7 @@ body {
 
 .header-content strong {
     color: #ffe099;
+    /* color: #FEAE6F; */
 }
 
 .header-content {
