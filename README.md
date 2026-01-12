@@ -8,12 +8,12 @@
     A Holistic Framework for Robust and Generalist Computer-Using Agents
   </h3>
 </div>
+**Official repository for the paper: 《OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agents》**.
 
-**Official repository for the paper: [OS-SYMPHONY: A Holistic Framework for Robust and Generalist Computer-Using Agents]()**.
-
-[![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() ![License](https://img.shields.io/badge/License-MIT-blue) [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)](https://os-copilot.github.io/OS-Symphony/)
+[![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)](https://os-copilot.github.io/OS-Symphony/) ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## 📑 Table of Contents
+
 - [🗞️ Updates](#-updates)
 - [💡 Overview](#-overview)
 - [📊 Results](#-results)
@@ -31,7 +31,7 @@
 
 ## 🗞️ Updates
 
-- **[2026-01-06]** 🎉 We have released the initial version of our [paper](), [code](https://github.com/OS-Copilot/OS-Symphony), and [project page]().
+- **[2026-01-13]** 🎉 We have released the initial version of our [paper](), [code](https://github.com/OS-Copilot/OS-Symphony), and [project page](https://os-copilot.github.io/OS-Symphony/).
 
 - **[2026-01-04]** 🎉 **Congratulations:** OS-Symphony has achieved a score of **65.8** on the [OSWorld Official Evaluation](https://os-world.github.io/) (using GPT-5 + UI-TARS-1.5-7B with 50 steps). As of now, this ranks **5th** overall, **3rd** among methods without multiple rollout, and **1st** under the 50-steps constraint！
 
@@ -120,15 +120,15 @@ bash crucial_scripts/run_os_symphony_aws_official.sh
 | :-------------------- | :----------------------------------------------------------- |
 | `path_to_vm`          | Path to the VM Golden Image.<br>⚠️ **For MacOSArena:** Must be two paths separated by a space: `"/path/to/mac_hdd_ng.img /path/to/BaseSystem.img"` |
 | `searcher_path_to_vm` | Path to the Linux Search Environment image (`/path/to/Ubuntu.qcow2`). |
-| `num_envs`            | Number of concurrent processes for parallel evaluation.      |
+| `num_envs`            | Number of concurrent processes for parallel evaluation. This primarily depends on your machine's resources and the throughput of the backend model. |
 | `proxy`               | Network proxy URL (Format: `http://<ip>:<port>`). Required for OSWorld and WindowsAgentArena. |
-| `client_password`     | VM login password. Use `"password"` for OSWorld and `"1234"` for MacOSArena. |
+| `client_password`     | VM login password. Use `"password"` for OSWorld(Docker),  `"osworld-public-evaluation"` for OSWorld(AWS Cloud) and `"1234"` for MacOSArena. WindowsAgentArena does not need password. |
 
 #### 🤖 Agent Settings
 
 | Parameter                                                   | Description                                                  |
 | :---------------------------------------------------------- | :----------------------------------------------------------- |
-| `xx_provider，xx_model，xx_url，xx_api_key，xx_temperature` | Configuration for VLM inference (OpenAI-compatible API). We recommend using **vLLM** for open-source models. |
+| `xx_provider，xx_model，xx_url，xx_api_key，xx_temperature` | Configuration for VLM inference (OpenAI-compatible API). We recommend using **[vLLM](docs.vllm.ai/en/latest/)** for open-source models. |
 | `coder_budget`, `searcher_budget`                           | Maximum inner-loop iterations for the Coder and Searcher Agents, default is 20. |
 | `searcher_engine`                                           | Search engine provider. We recommend `duckduckgo` over Google to avoid CAPTCHA blocks. |
 | `memoryer_max_images`                                       | Maximum number of images retained in the Reflection-Memory Agent. |
@@ -138,12 +138,12 @@ bash crucial_scripts/run_os_symphony_aws_official.sh
 
 #### 🧪 Experiment Settings
 
-| Parameter           | Description                                              |
-| :------------------ | :------------------------------------------------------- |
-| `exp_name`          | Name of the experiment (defines the results directory).  |
-| `enable_reflection` | Whether enable the Reflection-Memory Agent (RMA) module. |
-| `max_steps`         | Maximum number of steps allowed per task.                |
-| `benchmark`         | Target benchmark: `osworld`, `waa`, or `macosarena`.     |
+| Parameter           | Description                                                  |
+| :------------------ | :----------------------------------------------------------- |
+| `exp_name`          | Name of the experiment (defines the results directory).      |
+| `enable_reflection` | Whether enable the Reflection-Memory Agent (RMA) module.     |
+| `max_steps`         | Maximum number of steps allowed per task.                    |
+| `benchmark`         | Target benchmark: support `osworld`, `waa`, or `macosarena`. |
 
 ### 4. Visualization
 
@@ -155,18 +155,25 @@ To visualize the execution process and generate statistical reports, run the Gra
 python gradio/gradio_show_result.py --root_dir results/{exp_name} --port 10000
 ```
 
+Then, you can open a webpage([http://0.0.0.0:10000](http://0.0.0.0:10000)) and check your trajectory per task:
+
+![](assets/gradio_1.png)
+
 ## ✨ Features
 
 1. **Unified Cross-Platform Evaluation:** We decouple the  agent logic from the OS environment, providing a unified interface to  evaluate agents across Linux, Windows, and MacOS seamlessly.
 2. **Enhanced Robustness:** We have addressed numerous environment instability issues and bugs found in the original codebases of the supported benchmarks.
-3. **Extensibility:** Support for defining more custom tasks.
+
+   > ***Important***：This repository includes modifications to the OSWorld environment. If  you wish to utilize a codebase identical to the official version for a  fair comparison, please refer to our implementation [submitted to the official OSWorld repository](https://github.com/xlang-ai/OSWorld/blob/main/run_os_symphony.sh); alternatively, migrating it to our  framework is straightforward. Please note that our official benchmark results were obtained using the official repository, while the all results reported in the paper are based on the current repository.
+
+3. **Extensibility:** Support for defining more custom environments and tasks.
 4. **Custom Workflows:** Flexible architecture allowing to customize Agent workflows and tool configurations.
 
 We welcome the community to use our codebase for evaluating your own agents and tasks.
 
 ## 😊 Acknowledgement
 
-We express our deepest gratitude to the following excellent projects for their contributions of GUI automation: [OSWorld](https://github.com/xlang-ai/OSWorld), [WindowsAgentArena](https://github.com/microsoft/WindowsAgentArena), [MacOSArena](https://github.com/open-compass/MMBench-GUI), [Agent S series](https://github.com/simular-ai/Agent-S), [UI-TARS series](https://github.com/bytedance/UI-TARS), [GTA1](https://github.com/Yan98/GTA1), [ScaleCUA](https://github.com/OpenGVLab/ScaleCUA) *etc.*
+The core implementation of ***OS-Symphony*** is based on the [Agent S series](https://github.com/simular-ai/Agent-S) codebase; we extend our special thanks to them for their exceptional design. We also express our sincere gratitude to other pioneering projects for their contributions to GUI automation, including [OSWorld](https://github.com/xlang-ai/OSWorld), [WindowsAgentArena](https://github.com/microsoft/WindowsAgentArena), [MacOSArena](https://github.com/open-compass/MMBench-GUI), [UI-TARS series](https://github.com/bytedance/UI-TARS), [GTA1](https://github.com/Yan98/GTA1), [ScaleCUA](https://github.com/OpenGVLab/ScaleCUA), *etc*.
 
 ## 📃 Citation
 
