@@ -181,7 +181,7 @@ The core implementation of ***OS-Symphony*** is based on the [Agent S series](ht
 If you find this project useful in your research, please cite our paper：
 
 ```tex
-@misc{yang2026ossymphonyholisticframeworkrobust,
+@misc{yang2026ossymphony,
       title={OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agent}, 
       author={Bowen Yang and Kaiming Jin and Zhenyu Wu and Zhaoyang Liu and Qiushi Sun and Zehao Li and JingJing Xie and Zhoumianze Liu and Fangzhi Xu and Kanzhi Cheng and Qingyun Li and Yian Wang and Yu Qiao and Zun Wang and Zichen Ding},
       year={2026},
