@@ -97,7 +97,7 @@ playwright install
 
 ### 2. VM Configuration
 
-Configuring the Virtual Machine environments is a critical step. Please strictly follow the instructions in **[SETUP.md](SETUP.md)/[SETUP_zh.md](SETUP_zh.md)** to download resources and configure the Golden Images for Linux, Windows, and MacOS.
+Configuring the Virtual Machine environments is a critical step. Please strictly follow the instructions in **[SETUP.md](SETUP.md)** / **[SETUP_zh.md](SETUP_zh.md)** to download resources and configure the Golden Images for Linux, Windows, and MacOS.
 
 ### 3. Running Evaluation
 
