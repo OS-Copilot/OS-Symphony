@@ -9,9 +9,9 @@
   </h3>
 </div>
 
-**Official repository for the paper: 《OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agents》**.
+**Official repository for the paper: [OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agents](https://arxiv.org/abs/2601.07779)**.
 
-[![arXiv](https://img.shields.io/badge/arXiv-2412.19723-b31b1b.svg)]() [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)](https://os-copilot.github.io/OS-Symphony/) ![License](https://img.shields.io/badge/License-MIT-blue)
+[![arXiv](https://img.shields.io/badge/arXiv-2601.07779-b31b1b.svg)](https://arxiv.org/pdf/2601.07779) [![🌐 Homepage](https://img.shields.io/badge/Website-🌐-informational)](https://os-copilot.github.io/OS-Symphony/) ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ## 📑 Table of Contents
 
@@ -32,7 +32,7 @@
 
 ## 🗞️ Updates
 
-- **[2026-01-13]** 🎉 We have released the initial version of our [paper](), [code](https://github.com/OS-Copilot/OS-Symphony), and [project page](https://os-copilot.github.io/OS-Symphony/).
+- **[2026-01-13]** 🎉 We have released the initial version of our [paper](https://arxiv.org/pdf/2601.07779), [code](https://github.com/OS-Copilot/OS-Symphony), and [project page](https://os-copilot.github.io/OS-Symphony/).
 
 - **[2026-01-04]** 🎉 **Congratulations:** OS-Symphony has achieved a score of **65.8** on the [OSWorld Official Evaluation](https://os-world.github.io/) (using GPT-5 + UI-TARS-1.5-7B with 50 steps). As of now, this ranks **5th** overall, **3rd** among methods without multiple rollout, and **1st** under the 50-steps constraint！
 
@@ -97,7 +97,7 @@ playwright install
 
 ### 2. VM Configuration
 
-Configuring the Virtual Machine environments is a critical step. Please strictly follow the instructions in **[SETUP.md](SETUP.md)/[SETUP_zh.md](SETUP_zh.md)** to download resources and configure the Golden Images for Linux, Windows, and MacOS.
+Configuring the Virtual Machine environments is a critical step. Please strictly follow the instructions in **[SETUP.md](SETUP.md)** / **[SETUP_zh.md](SETUP_zh.md)** to download resources and configure the Golden Images for Linux, Windows, and MacOS.
 
 ### 3. Running Evaluation
 
@@ -181,10 +181,13 @@ The core implementation of ***OS-Symphony*** is based on the [Agent S series](ht
 If you find this project useful in your research, please cite our paper：
 
 ```tex
-@article{ossymphony2026,
-  title={OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agents},
-  author={Shanghai AI Lab OS-Copilot Team},
-  journal={https://github.com/OS-Copilot/OS-Symphony},
-  year={2026}
+@misc{yang2026ossymphony,
+      title={OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agent}, 
+      author={Bowen Yang and Kaiming Jin and Zhenyu Wu and Zhaoyang Liu and Qiushi Sun and Zehao Li and JingJing Xie and Zhoumianze Liu and Fangzhi Xu and Kanzhi Cheng and Qingyun Li and Yian Wang and Yu Qiao and Zun Wang and Zichen Ding},
+      year={2026},
+      eprint={2601.07779},
+      archivePrefix={arXiv},
+      primaryClass={cs.MA},
+      url={https://arxiv.org/abs/2601.07779}, 
 }
 ```
