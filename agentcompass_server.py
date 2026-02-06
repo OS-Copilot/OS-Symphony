@@ -17,7 +17,7 @@ import time
 import shutil
 import asyncio
 from contextlib import asynccontextmanager
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any
 
 import uvicorn
 from fastapi import FastAPI, Request
@@ -26,12 +26,12 @@ from fastapi.concurrency import run_in_threadpool
 from desktop_env.osworld.desktop_env import DesktopEnv as OSWorldDesktopEnv
 from desktop_env.waa.desktop_env import DesktopEnv as WindowsAgentArenaDesktopEnv
 
-from mm_agents.qwen3vl_agent import Qwen3VLAgent
+from mm_agents.qwen3vl.qwen3vl_agent import Qwen3VLAgent
 from mm_agents.anthropic.main import AnthropicAgent
 from mm_agents.kimi.kimi_agent import KimiAgent
 from mm_agents.glm4v.glm4v_agent import GLM4VAgent
-from mm_agents.seed_agent import SeedAgent
-from mm_agents.uitars15_v2 import UITarsAgent
+from mm_agents.seedvl.seed_agent import SeedAgent
+from mm_agents.uitars.uitars15_v2 import UITarsAgent
 
 # --- Logging Configuration ---
 logging.basicConfig(
