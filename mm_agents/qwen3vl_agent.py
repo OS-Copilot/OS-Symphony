@@ -11,20 +11,16 @@ import openai
 from openai import OpenAI
 from PIL import Image
 from requests.exceptions import SSLError
-from google.api_core.exceptions import (
-    InvalidArgument,
-    ResourceExhausted,
-    InternalServerError,
-    BadRequest,
-)
 from mm_agents.utils.qwen_vl_utils import smart_resize
-from mm_agents.interngui.agents.critic_agent import CriticAgent
-from mm_agents.uitars15_v2 import IMAGE_FACTOR
+from mm_agents.base import ComputerUseBaseAgent
 
 logger = logging.getLogger("desktopenv.agent")
 
 MAX_RETRY_TIMES = 5
 
+
+class CriticAgent:
+    pass
 
 def encode_image(image_content):
     return base64.b64encode(image_content).decode("utf-8")
@@ -54,13 +50,13 @@ def process_image(image_bytes):
     return base64.b64encode(processed_bytes).decode("utf-8")
 
 
-class Qwen3VLAgent:
-
+class Qwen3VLAgent(ComputerUseBaseAgent):
     def __init__(
             self,
             platform: str = "ubuntu",
             model: str = "qwen3-vl",
             base_url: str = "",
+            api_key: str = "",
             max_tokens: int = 1500,
             top_p: float = 0.9,
             temperature: float = 0.0,
@@ -69,12 +65,13 @@ class Qwen3VLAgent:
             history_n: int = 8,
             add_thought_prefix: bool = False,
             coordinate_type: str = "relative",
-            critic_agent: CriticAgent = None,  # type: ignore
+            critic_agent: CriticAgent | None = None,  # type: ignore
             critic_times=1,
     ):
         self.platform = platform
         self.model = model
         self.base_url = base_url
+        self.api_key = api_key
         self.max_tokens = max_tokens
         self.top_p = top_p
         self.temperature = temperature
@@ -367,7 +364,8 @@ Previous actions:
             if len(action_str) >= 1:
                 cur_action_str = action_str[0]
 
-            critic_result = self.critic_agent.critic(task=instruction, screenshot=obs["screenshot"],
+            # critic_result = self.critic_agent.critic(task=instruction, screenshot=obs["screenshot"], action=cur_action_str, history=history_action_str)
+            critic_result = self.critic_agent.critic(task=instruction, screenshot=processed_image,
                                                      action=cur_action_str, history=history_action_str)
             if critic_result:
                 break
@@ -408,6 +406,8 @@ Previous actions:
                     y_scale = original_height / processed_height
                     return int(x * x_scale), int(y * y_scale), 0, 0
                 return int(x), int(y), 0, 0
+
+            # qwen3系列是相对的0~1000
             # relative: scale from 0..999 grid
             x_scale = original_width / 999
             y_scale = original_height / 999
@@ -590,10 +590,6 @@ Previous actions:
                 openai.RateLimitError,
                 openai.BadRequestError,
                 openai.InternalServerError,
-                InvalidArgument,
-                ResourceExhausted,
-                InternalServerError,
-                BadRequest,
         ),
         interval=30,
         max_tries=5,
@@ -603,11 +599,11 @@ Previous actions:
 
         if "service" not in self.base_url:
             basic_auth_header = f"Basic NWFkMzQxMDBlZTA1NWE0YmFlNjYzNzBhNWU2ODNiYWM6NjA3ZGU4MjQ5NjU3YTNiM2JkMDM2ZGM5NmQ0YzBiMmY="
-            client = OpenAI(base_url=self.base_url, api_key="none",
+            client = OpenAI(base_url=self.base_url, api_key=self.api_key,
                             default_headers={"Authorization": basic_auth_header})
         else:
             logger.info(f"H Service VLLM: {self.base_url}")
-            client = OpenAI(base_url=self.base_url)
+            client = OpenAI(base_url=self.base_url, api_key=self.api_key)
         # base_url = "https://poc-dashscope.aliyuncs.com/compatible-mode/v1"
         # api_key = "sk-123"
         # client = openai.OpenAI(base_url=base_url, api_key=api_key)
