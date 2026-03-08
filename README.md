@@ -191,3 +191,7 @@ If you find this project useful in your research, please cite our paper：
       url={https://arxiv.org/abs/2601.07779}, 
 }
 ```
+
+[![Star History Chart](https://api.star-history.com/svg?repos=OS-Copilot/OS-Symphony&type=Date)](https://star-history.com/#OS-Copilot/OS-Symphony&Date)
+
+
