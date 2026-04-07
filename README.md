@@ -32,7 +32,7 @@
 
 ## 🗞️ Updates
 
-- **[2026-04-06]** 🎉 **Congratulations:** Our paper has been accepted to **ACL 2026 (Main Conference)**.
+- **[2026-04-06]** 🎉 **Congratulations:** Our paper has been accepted to **ACL 2026 (Main Conference)**!
 - **[2026-01-13]** 🎉 We have released the initial version of our [paper](https://arxiv.org/pdf/2601.07779), [code](https://github.com/OS-Copilot/OS-Symphony), and [project page](https://os-copilot.github.io/OS-Symphony/).
 
 - **[2026-01-04]** 🎉 **Congratulations:** OS-Symphony has achieved a score of **65.8** on the [OSWorld Official Evaluation](https://os-world.github.io/) (using GPT-5 + UI-TARS-1.5-7B with 50 steps). As of now, this ranks **5th** overall, **3rd** among methods without multiple rollout, and **1st** under the 50-steps constraint！
